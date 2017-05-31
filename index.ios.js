@@ -4,13 +4,13 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
   Text,
   View
-} from 'react-native';
+} from 'react-native'
 
 export default class Comprinha extends Component {
   render() {
@@ -27,7 +27,7 @@ export default class Comprinha extends Component {
           Cmd+D or shake for dev menu
         </Text>
       </View>
-    );
+    )
   }
 }
 
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+})
 
-AppRegistry.registerComponent('Comprinha', () => Comprinha);
+AppRegistry.registerComponent('Comprinha', () => Comprinha)

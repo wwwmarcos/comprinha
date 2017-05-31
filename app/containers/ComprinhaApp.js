@@ -36,7 +36,7 @@ class ComprinhaApp extends Component {
           WOOWOWohss
         </Text>
         <BarCodeScanner onBarCodeRead={this.state.onBarCodeRead} />
-        <ProductList style={styles.welcome} products={this.state.products} />
+        <ProductList products={this.state.products} />
       </View>
     )
   }

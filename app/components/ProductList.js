@@ -3,7 +3,7 @@ import { View, ListView } from 'react-native'
 import ProductListItem from './ProductListItem'
 
 const dataSource = new ListView.DataSource({
-  rowHasChanged: (row1, row2) => row1 !== row2,
+  rowHasChanged: (row1, row2) => row1 !== row2
 })
 
 export default class ProductList extends Component {

@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Alert  
-} from 'react-native'
+import { AppRegistry,  StyleSheet, Text, View, Alert } from 'react-native'
+import { connect } from 'react-redux'
+import { addProduct } from '../actions/ProductListActions'
+import ProductList from '../components/ProductList'
+import BarCodeScanner from '../components/BarCodeScanner'
 
 const styles = StyleSheet.create({
   container: {
@@ -18,53 +16,38 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  centerLine: {
-    textAlign: 'center',
-    color: '#F22613',
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    color: '#000',
-    padding: 10,
-    margin: 40
   }
 })
 
-import Camera from 'react-native-camera'
+class ComprinhaApp extends Component {
 
-export default class ComprinhaApp extends Component {
-  
-  onBarCodeRead = (data) => {
-    console.log(data)
-    Alert.alert(data.data)
+  constructor(props) {
+    super(props)
+    this.state = {
+      products: props.products,
+      onBarCodeRead: props.onBarCodeRead
+    }
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          WOOWOWoh
+          WOOWOWohss
         </Text>
-        <Camera
-          ref="cam"
-          style={styles.container}
-          onBarCodeRead={this.onBarCodeRead}
-        >
-        <Text style={styles.centerLine}>
-          ____________________________________________________
-          </Text>
-        </Camera>
+        <BarCodeScanner onBarCodeRead={this.state.onBarCodeRead} />
+        <ProductList style={styles.welcome} products={this.state.products} />
       </View>
     )
   }
-  
-}
+} 
 
+const mapStateToProps = (state) => state.productList
+
+const mapDispatchToProps = (dispatch => ({
+  onBarCodeRead(code) {
+    dispatch(addProduct({name: 'wow', id: code.data}))
+  }
+}))
+
+export default connect(mapStateToProps, mapDispatchToProps)(ComprinhaApp)

@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { AppRegistry,  StyleSheet, Text, View, Alert } from 'react-native'
+import { AppRegistry,  StyleSheet, View, Alert } from 'react-native'
+import { NavigationActions, addNavigationHelpers } from 'react-navigation/src/react-navigation';
 import { connect } from 'react-redux'
-import { addProduct } from '../actions/ProductListActions'
-import ProductList from '../components/ProductList'
-import BarCodeScanner from '../components/BarCodeScanner'
+import AppNavigator from '../Navigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,35 +18,12 @@ const styles = StyleSheet.create({
   }
 })
 
-class ComprinhaApp extends Component {
+const ComprinhaApp = ({ nav, dispatch }) =>  (
+  <AppNavigator navigation={ addNavigationHelpers({ dispatch, state: nav }) } />
+)
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      products: props.products,
-      onBarCodeRead: props.onBarCodeRead
-    }
-  }
+const mapStateToProps = ( state ) => state
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          WOOWOWohss
-        </Text>
-        <BarCodeScanner onBarCodeRead={this.state.onBarCodeRead} />
-        <ProductList products={this.state.products} />
-      </View>
-    )
-  }
-} 
-
-const mapStateToProps = (state) => state.productList
-
-const mapDispatchToProps = (dispatch => ({
-  onBarCodeRead(code) {
-    dispatch(addProduct({name: 'wow', id: code.data}))
-  }
-}))
+const mapDispatchToProps = (dispatch => ({ dispatch }))
 
 export default connect(mapStateToProps, mapDispatchToProps)(ComprinhaApp)

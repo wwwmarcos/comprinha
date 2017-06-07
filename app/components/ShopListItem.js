@@ -28,6 +28,12 @@ const styles = StyleSheet.create({
     marginTop: 2,
     color: '#222222',
   },
+  price: {
+    fontSize: 18,
+    marginLeft: 5,
+    marginTop: 2,
+    color: '#222222',
+  },
   subText: {
     fontSize: 15,
     marginLeft: 5,
@@ -40,10 +46,13 @@ const ShopListItem = ({ shop, onItemPress, onLongPress }) => (
     <TouchableHighlight onPress={ () => onItemPress(shop) } onLongPress={ () => onLongPress(shop) }>
     <View style={ styles.container }>
     <Text style={ styles.title }>
-      Coca cola Zero
+      { shop.name }
+    </Text>
+    <Text style={ styles.title }>
+      R$ { shop.price }
     </Text>
     <Text style={ styles.subText }>
-      { shop.id }
+      { shop.code }
     </Text>
     </View>
     </TouchableHighlight>

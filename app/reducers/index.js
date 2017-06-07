@@ -1,5 +1,7 @@
-import productList from './ProductList.js'
+import shopList from './ShopList.js'
+import nav from './Nav.js'
 
 export {
-  productList
+  shopList,
+  nav
 }

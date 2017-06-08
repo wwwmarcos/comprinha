@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { addProduct } from '../actions/ShopListActions'
 import BarCodeScanner from '../components/BarCodeScanner'
 
-const BarCodeSnannerScreen = ({ onBarCodeRead, navigation }) => (
+const BarCodeSnannerScreen = ({ onBarCodeRead, navigation }) =>  (
   <BarCodeScanner onBarCodeRead={ onBarCodeRead } />
 )
 
@@ -13,7 +13,7 @@ const mapStateToProps = ( state ) => state
 const mapDispatchToProps = (dispatch => ({
   onBarCodeRead(code) {
     Alert.alert(code.data)
-    dispatch(addProduct({name: 'wow', id: code.data}))
+    dispatch(addProduct({ code: code.data}))
   }
 }))
 

@@ -13,17 +13,19 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ADD_PRODUCT_PENDING:
       return state
+
     case ADD_PRODUCT_FULFILLED:
-      console.log(action.payload.data)
       return {
         ...state,
         shopList: [...state.shopList, action.payload.data]
       }
+
     case PRODUCTS_REJECTED:
       return {
         ...state,
         error: action.payload.message
       }
+
     default:
       return state
   }

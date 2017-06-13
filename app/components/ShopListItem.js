@@ -48,7 +48,7 @@ const ShopListItem = ({ shop, onItemPress, onLongPress }) => (
     <Text style={ styles.title }>
       { shop.name }
     </Text>
-    <Text style={ styles.title }>
+    <Text style={ styles.price }>
       R$ { shop.price }
     </Text>
     <Text style={ styles.subText }>
